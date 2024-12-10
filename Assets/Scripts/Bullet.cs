@@ -30,6 +30,12 @@ public class Bullet : MonoBehaviour
 
         print($"Dealt {damage} damage to {other.gameObject.name}");
 
+        
+        var health = other.gameObject.GetComponent<Health>();
+        if (health != null)
+        {
+            health.TakeDamage((int)damage);
+        }
         Destroy(gameObject);
     }
 }

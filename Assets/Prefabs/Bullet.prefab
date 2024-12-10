@@ -164,4 +164,4 @@ MonoBehaviour:
   direction: {x: 1, y: 0, z: 0}
   speed: 30
   lifeTime: 2
-  damageRange: {x: 10, y: 20}
+  damageRange: {x: 1, y: 2}
