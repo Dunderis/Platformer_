@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    
     [Header("Movement")]
     public float movementSpeed = 10;
     public float jumpHeight = 3;
@@ -80,7 +82,7 @@ public class Player : MonoBehaviour
         }
 
         //dash
-        if (Input.GetKeyDown(KeyCode.RightShift) && dashCooldownTime <= 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldownTime <= 0)
         {
             isDashing = true;
             dashTime = dashDuration;
@@ -105,6 +107,13 @@ public class Player : MonoBehaviour
         if (!isDashing)
         {
             rb.velocity = new Vector2(inputX * movementSpeed, rb.velocity.y);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Finish")
+        {
+            SceneManager.LoadScene("End");
         }
     }
         
